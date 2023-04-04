@@ -1,6 +1,7 @@
 package be.technifutur.decouverte.date;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class TestDateTimeFormatter {
@@ -15,5 +16,15 @@ public class TestDateTimeFormatter {
         text = "21/1/2000";
         LocalDate parsedDate = LocalDate.parse(text, readerFormatter);
         System.out.println(parsedDate.format(writerFormatter));
+
+        LocalDateTime dateTime = LocalDateTime.now();
+
+        DateTimeFormatter writer2Formatter = DateTimeFormatter.ofPattern("EEEE d MMMM yyyy à h 'heure' mm 'minutes'");
+        DateTimeFormatter reader2Formatter = DateTimeFormatter.ofPattern("d/M/yyyy k:m");
+        text = dateTime.format(writer2Formatter);
+        System.out.println(text);
+        text = "21/1/2000 20:15";
+        LocalDateTime parsedDateTime = LocalDateTime.parse(text, reader2Formatter);
+        System.out.println(parsedDateTime.format(writer2Formatter));
     }
 }
