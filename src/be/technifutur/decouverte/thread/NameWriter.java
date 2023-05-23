@@ -1,11 +1,11 @@
 package be.technifutur.decouverte.thread;
 
-public class Writer implements Runnable {
+public class NameWriter implements Runnable {
     private char car;
     private int nbLine;
     private int size;
 
-    public Writer(char car, int nbLine, int size) {
+    public NameWriter(char car, int nbLine, int size) {
         this.car = car;
         this.nbLine = nbLine;
         this.size = size;
@@ -19,6 +19,7 @@ public class Writer implements Runnable {
     }
 
     private void printLine() {
+        System.out.print(Thread.currentThread().getName());
         for (int i = 0; i < size; i++) {
             System.out.print(car);
         }

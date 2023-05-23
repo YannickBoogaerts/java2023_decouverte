@@ -5,9 +5,31 @@ import be.technifutur.decouverte.thread.Writer;
 public class TestHeritage {
 
     public static void main(String[] args) {
-        testRun();
+        /*testRun();
         testStart();
-        testJoin();
+        testJoin();*/
+        testReStart();
+    }
+
+    private static void testReStart() {
+        Thread t1 = new ThreadWriter(new Writer('o', 10, 50));
+        Thread t2 = new ThreadWriter(new Writer('-', 10, 50));
+        Thread t3 = new ThreadWriter(new Writer('|', 10, 50));
+
+        t1.start();
+        t2.start();
+        t3.start();
+
+        try {
+            t1.join();
+            t2.join();
+            t3.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        t1.start();
+        t2.start();
+        t3.start();
     }
 
     private static void testJoin() {
