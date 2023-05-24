@@ -12,28 +12,46 @@ public class Stock {
         return open;
     }
 
-    public Stock setOpen(boolean open) {
+    public synchronized Stock setOpen(boolean open) {
         this.open = open;
+        System.out.printf("%s du stock", open ? "Ouverture" : "Fermeture");
+        notifyAll();
         return this;
     }
 
-    public boolean add(String produit) {
-        boolean add = false;
-        if (stock.size() < 3 && open) {
-            add = stock.add(produit);
-            System.out.println(produit+ " ajouté");
+    public synchronized boolean add(String produit) {
+        try {
+            boolean add = false;
+            while (stock.size() >= 3 && open) {
+                wait();
+            }
+            if (stock.size() < 3 && open) {
+                add = stock.add(produit);
+                System.out.println(produit + " ajouté");
+                notifyAll();
+            }
+            return add;
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
-        return add;
     }
 
-    public Optional<String> remove() {
+    public synchronized Optional<String> remove() {
+        try{
         Optional<String> produit;
-        if(stock.size()>0 && open){
+        while(open&&stock.size()==0){
+            wait();
+        }
+        if (stock.size() > 0 && open) {
             produit = Optional.of(stock.remove(0));
-            System.out.printf("%s retirer par %s%n",produit.get(), Thread.currentThread().getName());
-        }else{
+            notifyAll();
+            System.out.printf("%s retirer par %s%n", produit.get(), Thread.currentThread().getName());
+        } else {
             produit = Optional.empty();
         }
         return produit;
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

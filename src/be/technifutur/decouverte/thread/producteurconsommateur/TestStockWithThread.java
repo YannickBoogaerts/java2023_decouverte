@@ -13,7 +13,6 @@ public class TestStockWithThread {
 
         try {
             Thread.sleep(10000);
-            System.out.println("fermeture du stock");
             stock1.setOpen(false);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
