@@ -12,7 +12,7 @@ public class Tarte {
         if(mange){
             System.out.println("il n'y a plus de tarte");
         }else{
-            System.out.println("MMM la bone tarte au "+gout);
+            System.out.println("MMM la bonne tarte au "+gout);
             mange = true;
         }
     }

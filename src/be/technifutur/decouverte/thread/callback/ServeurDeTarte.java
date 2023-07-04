@@ -2,8 +2,9 @@ package be.technifutur.decouverte.thread.callback;
 
 public class ServeurDeTarte {
 
-    public Tarte getTarte(String gout){
+    public synchronized Tarte getTarte(String gout){
         try {
+            System.out.println(this);
             System.out.printf(
                     "%s commence à préparer la tarte au %s%n",
                     Thread.currentThread().getName()
