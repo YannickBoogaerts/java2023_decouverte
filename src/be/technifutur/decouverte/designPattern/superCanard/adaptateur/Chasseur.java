@@ -1,4 +1,4 @@
-package be.technifutur.decouverte.designPattern.superCanard.nouveauDesign;
+package be.technifutur.decouverte.designPattern.superCanard.adaptateur;
 
 import java.util.ArrayList;
 import java.util.Collections;
