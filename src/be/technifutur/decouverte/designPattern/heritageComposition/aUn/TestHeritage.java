@@ -1,4 +1,4 @@
-package be.technifutur.decouverte.designPattern.heritageComposition.estUn;
+package be.technifutur.decouverte.designPattern.heritageComposition.aUn;
 
 public class TestHeritage {
 
@@ -24,11 +24,16 @@ class IdGenerator{
     }
 }
 
-class Options extends IdGenerator{
+class Options {
     private String[] options;
+    private IdGenerator idGenerator= new IdGenerator();
 
     public Options(String... options){
         this.options = options;
+    }
+
+    public int getId() {
+        return idGenerator.getId();
     }
 
     public void affiche(){
@@ -38,9 +43,13 @@ class Options extends IdGenerator{
     }
 }
 
-class Multilication extends IdGenerator{
+class Multilication {
 
+    private IdGenerator idGenerator = new IdGenerator();
 
+    public int getId() {
+        return idGenerator.getId();
+    }
 
     public void affiche(){
         int val = getId();

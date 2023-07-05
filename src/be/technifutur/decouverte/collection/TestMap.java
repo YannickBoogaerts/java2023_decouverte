@@ -20,12 +20,12 @@ public class TestMap {
 
     private static Map<Integer, Set<Personne>> getParDizaine(Personne[] personnes) {
         Map<Integer, Set<Personne>> dizaineMap = new TreeMap<>();
-        for(Personne p : personnes){
-            int diz = p.getAge()/10*10;
+        for (Personne p : personnes) {
+            int diz = p.getAge() / 10 * 10;
             Set<Personne> set = dizaineMap.get(diz);
-            if( set ==null){
+            if (set == null) {
                 set = new TreeSet<>(getComparator());
-                dizaineMap.put(diz,set);
+                dizaineMap.put(diz, set);
             }
             set.add(p);
         }
@@ -62,7 +62,7 @@ public class TestMap {
         return TestMap::toto;
     }
 
-    public static int toto(Personne p1, Personne p2){
+    public static int toto(Personne p1, Personne p2) {
         return p1.getNaissance().compareTo(p2.getNaissance());
     }
 
