@@ -1,11 +1,11 @@
 package be.technifutur.decouverte.designPattern.superCanard.labyrinthe;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class LabyrintheMap implements Labyrinthe{
 
     private Map<PositionMap,ElementLabyrinthe> map = new HashMap<>();
+    private Map<Position,PositionMap> positionDico = new HashMap<>();
     private PositionMap entree;
 
     @Override
@@ -24,12 +24,14 @@ public class LabyrintheMap implements Labyrinthe{
     }
 
     public LabyrintheMap setEntree(Position entree) {
-        this.entree = new PositionMap(entree);
+        this.entree = this.positionDico.get(entree);
         return this;
     }
 
     public ElementLabyrinthe addElement(Position pos, ElementLabyrinthe element){
-        return map.put(new PositionMap(pos),element);
+        LabyrintheMap.PositionMap key = new PositionMap(pos);
+        this.positionDico.put(pos,key);
+        return map.put(key,element);
     }
 
     private class PositionMap implements Position{
@@ -44,8 +46,8 @@ public class LabyrintheMap implements Labyrinthe{
         public List<PositionMap> getVoisin() {
             return position.getVoisin()
                     .stream()
-                    .map(PositionMap::new)
-                    .filter(map::containsKey)
+                    .map(positionDico::get)
+                    .filter(p->p!=null)
                     .toList();
         }
 
