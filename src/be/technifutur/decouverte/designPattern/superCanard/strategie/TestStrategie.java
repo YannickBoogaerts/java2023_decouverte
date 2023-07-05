@@ -12,7 +12,7 @@ public class TestStrategie {
                 new Colvert(),
                 new Mandarin()
                         .setComportementCancan(new Begayer(new CanCan()))
-                        .setComportementVol(()-> System.out.println("vol à réaction")),
+                        .setComportementVol(()-> "vol à réaction"),
                 new CanardPlastique(),
                 new Leurre()
         );
