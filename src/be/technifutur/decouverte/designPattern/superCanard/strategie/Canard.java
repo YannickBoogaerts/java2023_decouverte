@@ -27,13 +27,13 @@ public abstract class Canard {
         return comportementCancan;
     }
 
+    public ComportementVol getComportementVol() {
+        return comportementVol;
+    }
+
     public Canard setComportementCancan(ComportementCancan comportementCancan) {
         this.comportementCancan = comportementCancan;
         return this;
-    }
-
-    public ComportementVol getComportementVol() {
-        return comportementVol;
     }
 
     public Canard setComportementVol(ComportementVol comportementVol) {
