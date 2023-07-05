@@ -10,8 +10,7 @@ public class Begayer implements ComportementCancan {
     }
 
     @Override
-    public void cancanner() {
-        cri.cancanner();
-        cri.cancanner();
+    public String cancanner() {
+        return cri.cancanner()+" "+cri.cancanner();
     }
 }

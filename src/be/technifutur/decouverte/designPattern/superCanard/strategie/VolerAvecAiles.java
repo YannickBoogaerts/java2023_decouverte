@@ -2,7 +2,7 @@ package be.technifutur.decouverte.designPattern.superCanard.strategie;
 
 public class VolerAvecAiles implements ComportementVol {
     @Override
-    public void voler() {
-        System.out.println("je vole avec des ailes");
+    public String voler() {
+        return "je vole avec des ailes";
     }
 }

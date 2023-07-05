@@ -13,12 +13,10 @@ public class Alterner implements ComportementCancan {
     }
 
     @Override
-    public void cancanner() {
-        if(this.first){
-            cri1.cancanner();
-        }else{
-            cri2.cancanner();
-        }
+    public String cancanner() {
+        String cri =this.first?cri1.cancanner():cri2.cancanner();
+
         first= ! first;
+        return cri;
     }
 }

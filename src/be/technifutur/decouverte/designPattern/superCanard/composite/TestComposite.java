@@ -17,24 +17,24 @@ public class TestComposite {
         ComportementCancan cri2 = new Coincoin();
         ComportementCancan alterne = new Alterner(cri1,cri2);
         ComportementCancan begayer = new Begayer(alterne);
-        begayer.cancanner();//???
-        begayer.cancanner();//???
+        System.out.println(begayer.cancanner());//???
+        System.out.println(begayer.cancanner());//???
     }
 
     private static void testAlternative() {
         ComportementCancan cri1 = new CanCan();
         ComportementCancan cri2 = new Coincoin();
         ComportementCancan alterne = new Alterner(cri1,cri2);
-        alterne.cancanner();// Cancan
-        alterne.cancanner();// Coincoin
-        alterne.cancanner();// Cancan
-        alterne.cancanner();// Coincoin
-        alterne.cancanner();// Cancan
+        System.out.println(alterne.cancanner());// Cancan
+        System.out.println(alterne.cancanner());// Coincoin
+        System.out.println(alterne.cancanner());// Cancan
+        System.out.println(alterne.cancanner());// Coincoin
+        System.out.println(alterne.cancanner());// Cancan
     }
 
     private static void testBegayer() {
         ComportementCancan cancan = new CanCan();
         ComportementCancan begayer = new Begayer(cancan);
-        begayer.cancanner();// cancan cancan
+        System.out.println(begayer.cancanner());// cancan cancan
     }
 }

@@ -16,11 +16,11 @@ public abstract class Canard {
     }
 
     public void effectuerCancan() {
-        comportementCancan.cancanner();
+        System.out.println(comportementCancan.cancanner());
     }
 
     public void effectuerVol() {
-        comportementVol.voler();
+        System.out.println(comportementVol.voler());
     }
 
     public ComportementCancan getComportementCancan() {
