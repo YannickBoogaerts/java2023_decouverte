@@ -1,12 +1,13 @@
 package be.technifutur.decouverte.designPattern.superCanard.labyrinthe;
 
 import java.util.*;
+import java.util.function.Supplier;
 
 public class LabyrintheMap implements Labyrinthe{
 
     private Map<PositionMap,ElementLabyrinthe> map = new HashMap<>();
     private Map<Position,PositionMap> positionDico = new HashMap<>();
-    private PositionMap entree;
+    private Supplier<PositionMap> entree;
 
     @Override
     public ElementLabyrinthe getElement(Position pos) {
@@ -20,18 +21,19 @@ public class LabyrintheMap implements Labyrinthe{
 
     @Override
     public Position getEntre() {
-        return this.entree;
+        return this.entree.get();
     }
 
     public LabyrintheMap setEntree(Position entree) {
-        this.entree = this.positionDico.get(entree);
+        this.entree = ()->this.positionDico.get(entree);
         return this;
     }
 
-    public ElementLabyrinthe addElement(Position pos, ElementLabyrinthe element){
+    public LabyrintheMap addElement(Position pos, ElementLabyrinthe element){
         LabyrintheMap.PositionMap key = new PositionMap(pos);
         this.positionDico.put(pos,key);
-        return map.put(key,element);
+        map.put(key,element);
+        return this;
     }
 
     private class PositionMap implements Position{

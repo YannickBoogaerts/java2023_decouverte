@@ -10,15 +10,15 @@ public class TestCreateLabyrinthe {
         labyrintheMap.setEntree(new Position2D(2, 1));
         Position pos = new Position2D(1, 1);
         ElementLabyrinthe elem = factory.createMur();
-        labyrintheMap.addElement(pos, elem);
-        labyrintheMap.addElement(new Position2D(1, 2), factory.createMur());
-        labyrintheMap.addElement(new Position2D(1, 3), factory.createMur());
-        labyrintheMap.addElement(new Position2D(2, 1), factory.createPiece());
-        labyrintheMap.addElement(new Position2D(2, 2), factory.createPiece());
-        labyrintheMap.addElement(new Position2D(2, 3), factory.createPorte());
-        labyrintheMap.addElement(new Position2D(3, 1), factory.createMur());
-        labyrintheMap.addElement(new Position2D(3, 2), factory.createMur());
-        labyrintheMap.addElement(new Position2D(3, 3), factory.createMur());
+        labyrintheMap.addElement(pos, elem)
+                .addElement(new Position2D(1, 2), factory.createMur())
+                .addElement(new Position2D(1, 3), factory.createMur())
+                .addElement(new Position2D(2, 1), factory.createPiece())
+                .addElement(new Position2D(2, 2), factory.createPiece())
+                .addElement(new Position2D(2, 3), factory.createPorte())
+                .addElement(new Position2D(3, 1), factory.createMur())
+                .addElement(new Position2D(3, 2), factory.createMur())
+                .addElement(new Position2D(3, 3), factory.createMur());
 
         for (Position p : labyrintheMap.getEntre().getVoisin()){
             System.out.println("position d'entrée");
