@@ -54,6 +54,16 @@ public class LabyrintheMap implements Labyrinthe{
         }
 
         @Override
+        public int getLine() {
+            return position.getLine();
+        }
+
+        @Override
+        public int getColumn() {
+            return position.getColumn();
+        }
+
+        @Override
         public String toString() {
             return "PositionMap{" +
                     "position=" + position +

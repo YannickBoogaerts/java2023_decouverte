@@ -6,6 +6,8 @@ public interface LabyrintheBuilder {
     void addMur(int lig, int col);
     void addPiece(int lig, int col);
     void addPorte(int lig, int col);
+    void addAnimal(int lig, int col);
+    void setEntree(int lig, int col);
     void end();
 
 }

@@ -5,4 +5,6 @@ import java.util.List;
 public interface Position {
 
     List<? extends Position> getVoisin();
+    int getLine();
+    int getColumn();
 }
