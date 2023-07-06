@@ -46,7 +46,7 @@ public class LabyrintheMap implements Labyrinthe{
         public List<PositionMap> getVoisin() {
             return position.getVoisin()
                     .stream()
-                    .map(positionDico::get)
+                    .map(p-> positionDico.get(p))
                     .filter(p->p!=null)
                     .toList();
         }

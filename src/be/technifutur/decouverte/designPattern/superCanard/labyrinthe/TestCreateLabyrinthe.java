@@ -7,6 +7,7 @@ public class TestCreateLabyrinthe {
     public static void main(String[] args) {
         LabyrintheMap labyrintheMap = new LabyrintheMap();
         ChateauLabyrintheFactory factory = new ChateauLabyrintheFactory();
+        labyrintheMap.setEntree(new Position2D(2, 1));
         Position pos = new Position2D(1, 1);
         ElementLabyrinthe elem = factory.createMur();
         labyrintheMap.addElement(pos, elem);
@@ -18,8 +19,11 @@ public class TestCreateLabyrinthe {
         labyrintheMap.addElement(new Position2D(3, 1), factory.createMur());
         labyrintheMap.addElement(new Position2D(3, 2), factory.createMur());
         labyrintheMap.addElement(new Position2D(3, 3), factory.createMur());
-        labyrintheMap.setEntree(new Position2D(2, 1));
 
+        for (Position p : labyrintheMap.getEntre().getVoisin()){
+            System.out.println("position d'entrée");
+            affichevoisin(labyrintheMap,p);
+        }
         for (Position p : labyrintheMap.getSetPosition()) {
             affichevoisin(labyrintheMap, p);
         }
