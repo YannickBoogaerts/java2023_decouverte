@@ -1,12 +1,15 @@
 package be.technifutur.decouverte.designPattern.superCanard.builder;
 
+import be.technifutur.decouverte.designPattern.superCanard.labyrinthe.ElementLabyrintheFactory;
 import be.technifutur.decouverte.designPattern.superCanard.labyrinthe.LabyrintheMap;
 import be.technifutur.decouverte.designPattern.superCanard.labyrinthe.Position;
+import be.technifutur.decouverte.designPattern.superCanard.labyrinthe.chateau.ChateauLabyrintheFactory;
 
 public class TestBuilder {
 
     public static void main(String[] args) {
-        ObjectLabyrintheBuilder builder = new ObjectLabyrintheBuilder();
+        ElementLabyrintheFactory factory = new ChateauLabyrintheFactory();
+        ObjectLabyrintheBuilder builder = new ObjectLabyrintheBuilder(factory);
         LabyrintheFileReader reader = new LabyrintheFileReader();
         reader.read("monLaby.txt",builder);
         LabyrintheMap labyrintheMap = builder.getLabyrinthe();
