@@ -6,17 +6,18 @@ public class LabyrintheObjectReader {
     public void read(LabyrintheMap labyrintheMap, StringLabyrintheBuilder builder) {
         builder.start();
         for (Position pos: labyrintheMap.getSetPosition()){
-            switch (labyrintheMap.getElement(pos)){
-                case Mur m -> builder.addMur(pos.getLine(), pos.getColumn());
-                case Piece p ->{
-                    if(p.getAnimal().isPresent()){
-                        builder.addAnimal(pos.getLine(), pos.getColumn());
-                    }else {
-                        builder.addPiece(pos.getLine(), pos.getColumn());
-                    }
+
+            ElementLabyrinthe element = labyrintheMap.getElement(pos);
+            if (element instanceof Mur) {
+                builder.addMur(pos.getLine(), pos.getColumn());
+            }else if (element instanceof Porte) {
+                builder.addPorte(pos.getLine(), pos.getColumn());
+            }else if (element instanceof Piece p) {
+                if(p.getAnimal().isPresent()){
+                    builder.addAnimal(pos.getLine(), pos.getColumn());
+                }else {
+                    builder.addPiece(pos.getLine(), pos.getColumn());
                 }
-                case Porte o -> builder.addPorte(pos.getLine(), pos.getColumn());
-                default -> throw new IllegalStateException("Unexpected value: " + labyrintheMap.getElement(pos));
             }
         }
         Position entre = labyrintheMap.getEntre();
